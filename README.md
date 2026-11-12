@@ -32,12 +32,16 @@
 | 全队的决策：谁去踢球、谁接应、站在哪里 | `Strategy/WhiteFleetStrategyBehaviorControl.cpp`、`Strategy/WhiteFleetBehavior.cpp` |
 | 战术沙盘和行为工坊（第 2、3 阶）是怎么接进来的 | `WhiteFleetStrategyBehaviorControl.cpp` 里的 `applyMdfzFormation`、`applyMdfzRules` |
 
+`reference/` 里是这些代码用到的 B-Human 接口头文件（球、机器人位置、场地尺寸等的真实定义），只用来查名字，
+改了不会生效。让 AI 工具先在里面查真实的成员名，不要凭记忆猜（例如球的位置是 `theFieldBall.positionOnField`）。
+
 坐标约定：单位毫米，本方球门在 x 负方向（球门线 x = −10940），对方球门 x = +10940，场地宽 ±6940。
 
 ## 给 AI 编程工具的提示词示例
 
 > 这是 B-Human 机器人足球的红方行为代码（C++），只能修改 `WhiteFa62/` 目录下的 .cpp/.h。
 > 不能读写文件、联网、用线程或系统调用；代码会在比赛服务器上编译（clang，C++20，B-Human 框架头文件已在服务器上）。
+> 用到 B-Human 的类和成员时，先在 reference/ 目录里查真实定义，不要猜名字。
 > 我想让：离对方球门 4 米以内拿到球时直接射门，不再盘带。请找到相关代码，做最小的修改，并解释你改了什么、为什么。
 
 本地无法编译（需要完整的 B-Human 工程），以平台的编译结果为准。把平台显示的编译错误贴给 AI 工具，让它修改。
