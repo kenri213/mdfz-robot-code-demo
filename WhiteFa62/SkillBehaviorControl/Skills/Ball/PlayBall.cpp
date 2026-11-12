@@ -125,7 +125,7 @@ option((WhiteFleetSkillBehaviorControl) PlayBall,
     {
       // 改动：离对方球门 4 米以内拿到球，直接射门（不再传球或带球）
       const Vector2f opponentGoalCenter(theFieldDimensions.xPosOpponentGoalLine, 0.f);
-      const bool nearOpponentGoal = (theFieldBall.position - opponentGoalCenter).norm() < 4000.f;
+      const bool nearOpponentGoal = (theFieldBall.positionOnField - opponentGoalCenter).norm() < 4000.f;
       Angle backfieldDirection=0_deg;float backfieldLength=0.f;
       if(nearOpponentGoal)
         KickAtGoal();
